@@ -27,8 +27,10 @@ double sum_modified_laplacian(Mat image){
     ///
     /// YOUR CODE HERE
     ///
+    
+    double ret = 0;
+    /*
     Mat kernel, _temp;
-    double ret;
 
     int borderType = BORDER_CONSTANT;
     int img_row = image.rows;
@@ -47,13 +49,15 @@ double sum_modified_laplacian(Mat image){
     	}
     }
     ret = cv::sum(ML)[0];
+    */
     return ret;
 }
-void CallBackFunc(int event, int x, int y, int flags, void* userdata){
+void CallBackFunc(int event, int x, int y, int flags, void* userdata)
+{
 	     if  ( event == EVENT_LBUTTONDOWN )
-     {
+    {
           cout << "Left button of the mouse is clicked - position (" << x << ", " << y << ")" << endl;
-     }
+    }
 }
 int main() 
 {
@@ -106,6 +110,7 @@ int main()
 	    // If the current measure of focus is greater 
 	    // than the current maximum
 	    cv::imshow("frame",flower);
+	    cv::waitKey(100);
 	    if (val1 > maxV1){
 	        // Revise the current maximum
 	        maxV1 = val1;
@@ -113,6 +118,8 @@ int main()
 	        bestFrameId1 = (int)cap.get(CAP_PROP_POS_FRAMES);
 	        // Revise the new best frame
 	        bestFrame1 = frame.clone();
+	        cv::imshow("bestframe",flower);
+
 	        cout << "Frame ID of the best frame [Method 1]: " << bestFrameId1 << endl;
 	    }
 	    // If the current measure of focus is greater 
@@ -130,6 +137,7 @@ int main()
 	    if (frame.empty())
 	        break;
 	}
+	cv::waitKey(0);
 
 	cout << "================================================" << endl;
 
